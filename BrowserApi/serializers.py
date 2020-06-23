@@ -5,7 +5,7 @@ from browserapi.models import ForumPost
 
 
 class ForumPostSerializer(serializers.HyperlinkedModelSerializer):
-    owner = serializers.HyperlinkedRelatedField(view_name='user-detail')
+    owner = serializers.HyperlinkedRelatedField(view_name='user-detail', read_only=True)
 
     class Meta:
         model = ForumPost
@@ -13,7 +13,7 @@ class ForumPostSerializer(serializers.HyperlinkedModelSerializer):
         
         
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    forumPosts = serializers.HyperlinkedRelatedField(many=True, view_name='forumPost-detail')
+    forumPosts = serializers.HyperlinkedRelatedField(many=True, view_name='forumPost-detail', read_only=True)
 
     class Meta:
         model = User

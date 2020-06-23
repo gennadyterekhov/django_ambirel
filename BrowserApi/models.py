@@ -6,7 +6,7 @@ class ForumPost(models.Model):
     title = models.CharField(max_length=100, blank=True, default='')
     content = models.TextField()
                              
-    owner = models.ForeignKey('auth.User', related_name='forumPosts')
+    # owner = models.ForeignKey('auth.User', related_name='forumPosts', on_delete='CASCADE', read_only='True')
 
     class Meta:
         ordering = ('created',)

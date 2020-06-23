@@ -17,7 +17,21 @@ from rest_framework import mixins
 from rest_framework import renderers
 from rest_framework.decorators import api_view, renderer_classes
 from rest_framework.reverse import reverse
-from rest_framework.renderers import JSONPRenderer, JSONRenderer
+from rest_framework.renderers import JSONRenderer
+
+# from djangorestframework.views import APIView
+# from djangorestframework.response import Response
+# from djangorestframework.authtoken.models import Token
+# from djangorestframework import status
+# from djangorestframework import generics
+# from djangorestframework import permissions
+# from djangorestframework import mixins
+# from djangorestframework import renderers
+# from djangorestframework.decorators import api_view, renderer_classes
+# from djangorestframework.reverse import reverse
+# from djangorestframework.renderers import JSONPRenderer, JSONRenderer
+
+
 import json
 
 from browserapi.models import ForumPost

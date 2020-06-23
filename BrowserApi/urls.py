@@ -1,13 +1,13 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 from django.contrib import admin
 from browserapi import views
 
 
 # Admin
-admin.autodiscover()
+# admin.autodiscover()
 
 
-urlpatterns = patterns('',
+urlpatterns = [
     # BrowserAPI
  	url(r'^$', views.ApiRoot.as_view(), name='api-root'),
 
@@ -22,8 +22,8 @@ urlpatterns = patterns('',
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     # Admin
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', admin.site.urls),
 
     # Testing
     url(r'^userLoginTest', views.UserLoginTest, name='user-login-test'),
-)
+]

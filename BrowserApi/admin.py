@@ -1,4 +1,4 @@
 from django.contrib import admin
-from easyapi import models
+from browserapi import models
 
 admin.site.register(models.ForumPost)

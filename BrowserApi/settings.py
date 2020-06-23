@@ -1,4 +1,10 @@
 # Django settings for browserapi project.
+import django.template.backends.django
+import os
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -89,10 +95,32 @@ SECRET_KEY = 'sd+0p%8apnnlfl+!i*13765^oigo4x3)=*b_msxn4fjwv9bxad'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
+    'django.template.backends.django.DjangoTemplates',
 #     'django.template.loaders.eggs.Loader',
 )
 
-MIDDLEWARE_CLASSES = (
+
+# TEMPLATES = (
+#     'django.template.loaders.filesystem.Loader',
+#     'django.template.loaders.app_directories.Loader',
+#     'django.template.backends.django.DjangoTemplates',
+# #     'django.template.loaders.eggs.Loader',
+# )
+
+
+# так было:
+# MIDDLEWARE_CLASSES = (
+#     'django.middleware.common.CommonMiddleware',
+#     'django.contrib.sessions.middleware.SessionMiddleware',
+#     'django.middleware.csrf.CsrfViewMiddleware',
+#     'django.contrib.auth.middleware.AuthenticationMiddleware',
+#     'django.contrib.messages.middleware.MessageMiddleware',
+#     # Uncomment the next line for simple clickjacking protection:
+#     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+# )
+
+
+MIDDLEWARE = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -102,16 +130,50 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+
+
+
+
 ROOT_URLCONF = 'browserapi.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'browserapi.wsgi.application'
 
 TEMPLATE_DIRS = (
+    'browserapi/templates',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
+
+
+# TEMPLATES = [
+#     django.template.backends.django.DjangoTemplates,
+#     # django.template.backends.DjangoTemplates,
+# ]
+
+
+
+# в новом дж так
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        # 'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+
+
 
 INSTALLED_APPS = (
     'django.contrib.auth',
